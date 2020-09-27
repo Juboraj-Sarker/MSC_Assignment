@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_assignment1">
+
+    <fragment
+        android:id="@+id/nav_assignment1"
+        android:name="com.juborajsarker.assignment.fragment.Assignment1"
+        android:label="@string/str_assignment_1"
+        tools:layout="@layout/fragment_assignment1" />
+
+    <fragment
+        android:id="@+id/nav_assignment2"
+        android:name="com.juborajsarker.assignment.fragment.Assignment2"
+        android:label="@string/str_assignment_2"
+        tools:layout="@layout/fragment_assignment2" />
+
+    <fragment
+        android:id="@+id/nav_assignment3"
+        android:name="com.juborajsarker.assignment.fragment.Assignment3"
+        android:label="@string/str_assignment_3"
+        tools:layout="@layout/fragment_assignment3" />
+
+    <fragment
+        android:id="@+id/nav_assignment4"
+        android:name="com.juborajsarker.assignment.fragment.Assignment4"
+        android:label="@string/str_assignment_4"
+        tools:layout="@layout/fragment_assignment4" />
+
+
+</navigation>
