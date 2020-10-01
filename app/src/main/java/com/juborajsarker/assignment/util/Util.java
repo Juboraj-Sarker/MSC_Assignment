@@ -2,10 +2,13 @@ package com.juborajsarker.assignment.util;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -42,11 +45,45 @@ public class Util {
         activity.startActivity(intent);
     }
 
+
+    public void sendSMS (Activity activity, String number){
+        Uri uri = Uri.parse("smsto:" + number);
+        Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+        intent.putExtra("sms_body", "The SMS text");
+        activity.startActivity(intent);
+    }
+
     public void  openUrl(Activity activity, String url){
         if (!url.startsWith("http://") && !url.startsWith("https://"))
             url = "http://" + url;
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         activity.startActivity(browserIntent);
+    }
+
+
+    public void showDialog(final Activity activity, final String number){
+
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(activity, android.R.style.Theme_Material_Light_Dialog);
+        } else {
+            builder = new AlertDialog.Builder(activity);
+        }
+        builder
+                .setTitle("Call or SMS me !")
+                .setMessage("Choose whether action do you want?")
+                .setPositiveButton("CALL", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                       call(activity, number);
+                    }
+                })
+                .setNegativeButton("SMS", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        sendSMS(activity, number);
+                        //dialog.cancel();
+                    }
+                })
+                .show();
     }
 
 

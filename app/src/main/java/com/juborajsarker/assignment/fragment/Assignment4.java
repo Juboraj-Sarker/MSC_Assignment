@@ -98,7 +98,7 @@ public class Assignment4 extends Fragment {
             @Override
             public void onClick(View view) {
                 String cellPhone = tvCall.getText().toString();
-                util.call(getActivity(), cellPhone);
+                util.showDialog(getActivity(), cellPhone);
             }
         });
 
