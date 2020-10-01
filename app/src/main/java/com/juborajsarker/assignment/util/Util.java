@@ -24,7 +24,6 @@ public class Util {
         emailIntent.setType("text/plain");
         emailIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
-
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
