@@ -22,5 +22,9 @@
             android:id="@+id/nav_assignment4"
             android:icon="@drawable/ic_touch"
             android:title="@string/str_assignment_4" />
+        <item
+            android:id="@+id/nav_assignment5"
+            android:icon="@drawable/ic_touch"
+            android:title="@string/str_assignment_5" />
     </group>
 </menu>
