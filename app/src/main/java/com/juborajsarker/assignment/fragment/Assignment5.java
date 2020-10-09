@@ -3,6 +3,7 @@ package com.juborajsarker.assignment.fragment;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -48,11 +49,22 @@ public class Assignment5 extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null){
+            Toast.makeText(getContext(), "On Create", Toast.LENGTH_SHORT).show();
+            isResume = savedInstanceState.getBoolean("isResume");
+            tMillSec = savedInstanceState.getLong("tMills");
+            tBuff = savedInstanceState.getLong("tBuff");
+            tStart = savedInstanceState.getLong("tStart");
+            click = savedInstanceState.getInt("click");
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_assignment5, container, false);
+
+     //   Toast.makeText(getContext(), "On Create View", Toast.LENGTH_SHORT).show();
 
         init();
         return view;
@@ -68,6 +80,8 @@ public class Assignment5 extends Fragment {
         cmStopwatch = (Chronometer) view.findViewById(R.id.cm_stopwatch);
         cmStopwatch.setText("00:00:00");
         tvLap = (TextView) view.findViewById(R.id.tv_lap);
+
+        setText();
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +125,6 @@ public class Assignment5 extends Fragment {
                     isResume = true;
 
                 }else {
-
                     tBuff += tMillSec;
                     handler.removeCallbacks(runnable);
                     cmStopwatch.stop();
@@ -180,9 +193,32 @@ public class Assignment5 extends Fragment {
             sec = sec % 60;
             milliSec = (int) (tUpdate % 100);
             cmStopwatch.setText(String.format("%02d", min) + ":" + String.format("%02d", sec) + ":" + String.format("%02d", milliSec));
+
             handler.postDelayed(this, 60);
         }
     };
 
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle saveInstanceSate) {
+
+        super.onCreate(null);
+
+        saveInstanceSate.putBoolean("isResume", false);
+        saveInstanceSate.putLong("tMills", tMillSec);
+        saveInstanceSate.putLong("tBuff", tBuff);
+       // tUpdate = tBuff + tMillSec;
+        saveInstanceSate.putLong("tStart", tStart);
+        saveInstanceSate.putInt("click", click);
+    }
+
+
+    private void setText(){
+        tUpdate = tBuff + 0 ;
+        sec = (int) (tUpdate / 1000);
+        min = sec / 60;
+        sec = sec % 60;
+        milliSec = (int) (tUpdate % 100);
+        cmStopwatch.setText(String.format("%02d", min) + ":" + String.format("%02d", sec) + ":" + String.format("%02d", milliSec));
+    }
 }
