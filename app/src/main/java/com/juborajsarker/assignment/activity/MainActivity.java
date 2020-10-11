@@ -1,10 +1,14 @@
 package com.juborajsarker.assignment.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.juborajsarker.assignment.R;
 
+import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_assignment1, R.id.nav_assignment2, R.id.nav_assignment3, R.id.nav_assignment4, R.id.nav_assignment5)
+                R.id.nav_assignment1, R.id.nav_assignment2, R.id.nav_assignment3, R.id.nav_assignment4, R.id.nav_assignment5, R.id.nav_assignment6)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_container);
@@ -41,5 +45,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_container);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+
     }
+
+
+
 }

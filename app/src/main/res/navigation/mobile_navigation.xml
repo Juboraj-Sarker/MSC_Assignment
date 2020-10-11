@@ -36,5 +36,12 @@
         android:label="@string/str_assignment_5"
         tools:layout="@layout/fragment_assignment5" />
 
+    <activity
+        android:id="@+id/nav_assignment6"
+        android:name="com.juborajsarker.assignment.activity.ActivityAssignment6"
+        android:label="@string/str_assignment_6"
+        tools:layout="@layout/activity_assignment6" />
+
+
 
 </navigation>
